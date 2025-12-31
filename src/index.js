@@ -16,6 +16,22 @@ async function runVigilnzScan() {
         const serverUrl = process.env.GITHUB_SERVER_URL; // e.g. https://github.com 
         const repoUrl = `${serverUrl}/${repo}`;
 
+        const ref = process.env.GITHUB_REF; // e.g. "refs/heads/dev"
+        const headRef = process.env.GITHUB_HEAD_REF; // only for PRs
+        const baseRef = process.env.GITHUB_BASE_REF; // only for PRs
+        
+        let branch;
+        if (headRef) {
+          branch = headRef; // PR source branch
+        } else if (ref.startsWith('refs/heads/')) {
+          branch = ref.replace('refs/heads/', '');
+        } else {
+          branch = ref; // fallback (tags, PR refs)
+        }
+        
+        console.log(`Branch: ${branch}`);
+
+
         if (!apiKey) {
             action.setFailed(`Vigilnz API Key is Required`);
             return
