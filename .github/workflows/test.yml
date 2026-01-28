@@ -11,7 +11,6 @@ jobs:
       - name: Run Vigilnz Scan
         uses: vigilnz/vigilnz-scan-action@v1
         with:
-          # vigilnzApiKey: "vigil_69254d8ffff5ddd9ac8e076e_TAYYVCUO6DSS53WF"
           vigilnzApiKey: "${{ secrets.VIGILNZ_API_KEY }}"
           scanTypes: "sca,sbom,sast"
  
@@ -20,9 +19,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run Vigilnz Scan
-        uses: vigilnz/vigilnz-scan-action@v1
+        uses: vigilnz/vigilnz-scan-action@v1.1.0
         with:
-          # vigilnzApiKey: "vigil_69254d8ffff5ddd9ac8e076e_TAYYVCUO6DSS53WF"
           vigilnzApiKey: "${{ secrets.VIGILNZ_API_KEY }}"
           scanTypes: "DAST"
           dastScanType: "active"
@@ -33,7 +31,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run Vigilnz Scan
-        uses: vigilnz/vigilnz-scan-action@v1
+        uses: vigilnz/vigilnz-scan-action@v1.1.0
         with: 
           vigilnzApiKey: ${{ secrets.VIGILNZ_API_KEY }}
           scanTypes: "CONTAINER SCAN"
