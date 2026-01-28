@@ -9,8 +9,37 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run Vigilnz Scan
-        uses: Susenthiran28/custom-github-action@master
+        uses: vigilnz/vigilnz-scan-action@v1
         with:
           # vigilnzApiKey: "vigil_69254d8ffff5ddd9ac8e076e_TAYYVCUO6DSS53WF"
           vigilnzApiKey: "${{ secrets.VIGILNZ_API_KEY }}"
           scanTypes: "sca,sbom,sast"
+ 
+  Vigilnz_Scan1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Vigilnz Scan
+        uses: vigilnz/vigilnz-scan-action@v1
+        with:
+          # vigilnzApiKey: "vigil_69254d8ffff5ddd9ac8e076e_TAYYVCUO6DSS53WF"
+          vigilnzApiKey: "${{ secrets.VIGILNZ_API_KEY }}"
+          scanTypes: "DAST"
+          dastScanType: "active"
+          dastTargetUrl: "https://devplatform.com"
+          
+  Vigilnz_Scan2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Vigilnz Scan
+        uses: vigilnz/vigilnz-scan-action@v1
+        with: 
+          vigilnzApiKey: ${{ secrets.VIGILNZ_API_KEY }}
+          scanTypes: "CONTAINER SCAN"
+          containerImage: "myorg/myapp:1.0.0"
+          containerProvider: "dockerhub"
+          containerAuthType: "username-password"
+          containerUsername: ${{ secrets.DOCKERHUB_USERNAME }}
+          containerPassword: ${{ secrets.DOCKERHUB_PASSWORD }}
+        
