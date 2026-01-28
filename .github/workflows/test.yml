@@ -26,18 +26,18 @@ jobs:
           dastScanType: "active"
           dastTargetUrl: "https://devplatform.com"
           
-  Vigilnz_Scan2:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Run Vigilnz Scan
-        uses: vigilnz/vigilnz-scan-action@v1.1.0
-        with: 
-          vigilnzApiKey: ${{ secrets.VIGILNZ_API_KEY }}
-          scanTypes: "CONTAINER SCAN"
-          containerImage: "myorg/myapp:1.0.0"
-          containerProvider: "dockerhub"
-          containerAuthType: "username-password"
-          containerUsername: ${{ secrets.DOCKERHUB_USERNAME }}
-          containerPassword: ${{ secrets.DOCKERHUB_PASSWORD }}
+  # Vigilnz_Scan2:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - name: Run Vigilnz Scan
+  #       uses: vigilnz/vigilnz-scan-action@v1.1.0
+  #       with: 
+  #         vigilnzApiKey: ${{ secrets.VIGILNZ_API_KEY }}
+  #         scanTypes: "CONTAINER SCAN"
+  #         containerImage: "myorg/myapp:1.0.0"
+  #         containerProvider: "dockerhub"
+  #         containerAuthType: "username-password"
+  #         containerUsername: ${{ secrets.DOCKERHUB_USERNAME }}
+  #         containerPassword: ${{ secrets.DOCKERHUB_PASSWORD }}
         
