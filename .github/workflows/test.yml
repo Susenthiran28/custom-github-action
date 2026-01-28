@@ -10,34 +10,28 @@ jobs:
       - uses: actions/checkout@v4
       - name: Run Vigilnz Scan
         uses: vigilnz/vigilnz-scan-action@v1
-        with:
-          vigilnzApiKey: "${{ secrets.VIGILNZ_API_KEY }}"
-          scanTypes: "sca,sbom,sast"
- 
+        with: 
+          vigilnzApiKey: ${{ secrets.VIGILNZ_API_KEY }}
+          scanTypes: "CONTAINER SCAN"
+          containerImage: "myorg/myapp:1.0.0"
+          containerProvider: "dockerhub"
+          containerAuthType: "username-password"
+          containerUsername: ${{ secrets.DOCKERHUB_USERNAME }}
+          containerPassword: ${{ secrets.DOCKERHUB_PASSWORD }}
+  
   Vigilnz_Scan1:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Run Vigilnz Scan
-        uses: vigilnz/vigilnz-scan-action@master
-        with:
-          vigilnzApiKey: "${{ secrets.VIGILNZ_API_KEY }}"
-          scanTypes: "DAST"
-          dastScanType: "active"
-          dastTargetUrl: "https://devplatform.com"
-          
-  # Vigilnz_Scan2:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - name: Run Vigilnz Scan
-  #       uses: vigilnz/vigilnz-scan-action@v1.1.0
-  #       with: 
-  #         vigilnzApiKey: ${{ secrets.VIGILNZ_API_KEY }}
-  #         scanTypes: "CONTAINER SCAN"
-  #         containerImage: "myorg/myapp:1.0.0"
-  #         containerProvider: "dockerhub"
-  #         containerAuthType: "username-password"
-  #         containerUsername: ${{ secrets.DOCKERHUB_USERNAME }}
-  #         containerPassword: ${{ secrets.DOCKERHUB_PASSWORD }}
+        uses: vigilnz/vigilnz-scan-action@v1
+        with: 
+          vigilnzApiKey: ${{ secrets.VIGILNZ_API_KEY }}
+          scanTypes: "CONTAINER SCAN"
+          containerImage: "myapp:latest"
+          containerProvider: "aws-ecr"
+          containerRegistryType: "ecr-private"
+          containerRegistryUrl: "123456789012.dkr.ecr.us-east-1.amazonaws.com"
+          containerAuthType: "token"
+          containerToken: "asdasdasd"
         
