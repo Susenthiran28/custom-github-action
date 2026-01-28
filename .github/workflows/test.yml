@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run Vigilnz Scan
-        uses: vigilnz/vigilnz-scan-action@v1
+        uses: vigilnz/vigilnz-scan-action@master
         with: 
           vigilnzApiKey: ${{ secrets.VIGILNZ_API_KEY }}
           scanTypes: "CONTAINER SCAN"
@@ -24,7 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run Vigilnz Scan
-        uses: vigilnz/vigilnz-scan-action@v1
+        uses: vigilnz/vigilnz-scan-action@master
         with: 
           vigilnzApiKey: ${{ secrets.VIGILNZ_API_KEY }}
           scanTypes: "CONTAINER SCAN"
